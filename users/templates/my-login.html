@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content %}
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card" style="border-radius: 15px">
+          <div class="card-body p-5">
+            <h2 class="text-uppercase text-center mb-5">
+              Please login to your account
+            </h2>
+
+            <form method="POST">
+              <div data-mdb-input-init class="form-outline mb-4">
+                {{ Loginform.as_p }} {% csrf_token %}
+
+                <input
+                  type="submit"
+                  value="Login"
+                  class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                />
+              </div>
+              {% for message in messages %}
+
+              <div class="alert alert-success">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                {{ message }}
+              </div>
+
+              {% endfor %}
+
+              <p class="text-center text-muted mt-5 mb-0">
+                Not a member?
+                <a href="{% url 'register' %}" class="fw-bold text-body"
+                  ><u>Register </u></a
+                >
+              </p>
+            </form>
+
+            {% endblock content %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
